@@ -36,7 +36,7 @@ while running:
     if counter == 5000:
         car_speed += 0.15
         counter = 0
-        print("level up", car_speed)
+        print("Level up! Car speed is: ", round(car_speed, 2))
     
     # animate enemy vehicle
     car2_location[1] += car_speed
