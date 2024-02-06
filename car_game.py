@@ -7,6 +7,7 @@ road_width = int(width/1.6)
 roadmark_width = int(width/80)
 right_lane = width/2 + road_width/4
 left_lane = width/2 - road_width/4
+car_speed = 1
 
 pygame.init()
 running = True
@@ -28,9 +29,17 @@ car2 = pygame.image.load("D:/Programmin in VS/GitHub/SomeStuff/pygame_car_game/i
 car2_location = car2.get_rect()
 car2_location.center = left_lane, height*0.2
 
+counter = 0
+# game loop
 while running:
+    counter += 1
+    if counter == 5000:
+        car_speed += 0.15
+        counter = 0
+        print("level up", car_speed)
+    
     # animate enemy vehicle
-    car2_location[1] += 1
+    car2_location[1] += car_speed
     if car2_location[1] > height:
         if random.randint(0, 1) == 0:
             car2_location.center = right_lane, -200
